@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class UserDAOImpl implements UserDAO{
+public class LoginDAOImpl implements LoginDAO {
     @Override
     public boolean Login(String username, String password) {
         try(Connection conn = ConnectionUtil.getConnection()){

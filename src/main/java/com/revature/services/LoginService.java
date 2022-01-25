@@ -1,11 +1,11 @@
 package com.revature.services;
 
-import com.revature.DAO.UserDAO;
-import com.revature.DAO.UserDAOImpl;
+import com.revature.DAO.LoginDAO;
+import com.revature.DAO.LoginDAOImpl;
 
 public class LoginService {
-    private UserDAO userDAO = new UserDAOImpl();
+    private LoginDAO loginDAO = new LoginDAOImpl();
     public boolean login(String username, String password){
-        return userDAO.Login(username, password);
+        return loginDAO.Login(username, password);
     }
 }

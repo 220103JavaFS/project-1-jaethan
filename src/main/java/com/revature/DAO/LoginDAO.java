@@ -1,5 +1,5 @@
 package com.revature.DAO;
 
-public interface UserDAO {
+public interface LoginDAO {
     boolean Login(String username, String password);
 }
