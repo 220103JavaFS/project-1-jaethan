@@ -11,7 +11,7 @@ public class LoginDAOImpl implements LoginDAO {
     @Override
     public boolean Login(String username, String password) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM users WHERE user_acc = '" + username +"' and user_password = '" + password + "';";
+            String sql = "SELECT * FROM ers_users WHERE ers_username = '" + username +"' and ers_password = '" + password + "';";
             Statement statement = conn.createStatement();
 
             ResultSet result = statement.executeQuery(sql);
