@@ -9,8 +9,8 @@ import java.util.List;
 public class EmployeeService {
     private EmployeeDAO employeeDAO = new EmployeeDAOImpl();
 
-    public List<Reimbursement> viewPastRequest(){
-        return employeeDAO.viewPastRequest();
+    public List<Reimbursement> viewPastRequest(int authorId){
+        return employeeDAO.viewPastRequest(authorId);
     }
     boolean reimbRequest(Reimbursement r){
         return employeeDAO.reimbRequest(r);
