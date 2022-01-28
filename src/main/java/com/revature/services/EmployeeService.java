@@ -12,7 +12,7 @@ public class EmployeeService {
     public List<Reimbursement> viewPastRequest(int authorId){
         return employeeDAO.viewPastRequest(authorId);
     }
-    boolean reimbRequest(Reimbursement r){
+    public boolean reimbRequest(Reimbursement r){
         return employeeDAO.reimbRequest(r);
     }
 
