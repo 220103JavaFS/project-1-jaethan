@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface EmployeeDAO {
     List<Reimbursement> viewPastRequest();
-    Reimbursement reimbRequest(Reimbursement r) ;
+    boolean reimbRequest(Reimbursement r) ;
 }
