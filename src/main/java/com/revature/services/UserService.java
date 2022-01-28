@@ -6,7 +6,7 @@ import com.revature.models.Users;
 
 public class UserService {
     private UserDAO userDAO = new UserDAOImpl();
-    Users findbyId(int userId){
+    public Users findbyId(int userId){
         return userDAO.findbyId(userId);
     }
 }
