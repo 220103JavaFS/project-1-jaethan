@@ -5,6 +5,6 @@ import com.revature.models.Reimbursement;
 import java.util.List;
 
 public interface EmployeeDAO {
-    List<Reimbursement> viewPastRequest();
-    boolean reimbRequest(Reimbursement r) ;
+    List<Reimbursement> viewPastRequest(int authorId);
+    boolean reimbRequest(Reimbursement r);
 }
