@@ -9,13 +9,13 @@ import java.util.List;
 public class ManagerService {
     private ManagerDAO managerDAO = new ManagerDAOImpl();
 
-    List<Reimbursement> viewAllRequest(){
+    public List<Reimbursement> viewAllRequest(){
         return managerDAO.viewAllRequest();
     }
-    List<Reimbursement> viewUpdatedStatus(){
+    public List<Reimbursement> viewUpdatedStatus(){
         return managerDAO.viewUpdatedStatus();
     }
-    boolean updateRequest(Reimbursement r){
+    public boolean updateRequest(Reimbursement r){
         return managerDAO.updateRequest(r);
     }
 }
