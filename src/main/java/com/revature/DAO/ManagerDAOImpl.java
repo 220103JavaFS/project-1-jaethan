@@ -12,7 +12,7 @@ public class ManagerDAOImpl implements ManagerDAO{
     @Override
     public List<Reimbursement> viewAllRequest() {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM ers_reimbursement WHERE reimb_status_id = 3;";
+            String sql = "SELECT * FROM ers_reimbursement WHERE reimb_status_id = 1;";
 
             Statement statement = conn.createStatement();
 
@@ -53,7 +53,7 @@ public class ManagerDAOImpl implements ManagerDAO{
     @Override
     public List<Reimbursement> viewUpdatedStatus() {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM ers_reimbursement WHERE reimb_status_id = 1 OR reimb_status_id = 2;";
+            String sql = "SELECT * FROM ers_reimbursement WHERE reimb_status_id = 2 OR reimb_status_id = 3;";
 
             Statement statement = conn.createStatement();
 
