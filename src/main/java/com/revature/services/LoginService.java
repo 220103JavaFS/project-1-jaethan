@@ -8,6 +8,14 @@ import com.revature.models.Users;
 import java.security.NoSuchAlgorithmException;
 
 public class LoginService {
+
+    public LoginService() {
+    }
+
+    public LoginService(UserDAO userDAO) {
+        this.userDAO = userDAO;
+    }
+
     private UserDAO userDAO = new UserDAOImpl();
     private static Encrypt encryptor = new Encrypt();
 
