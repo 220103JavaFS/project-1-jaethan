@@ -64,7 +64,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
             int count = 0;
             statement.setInt(++count, r.getReimbAmount());
             statement.setString(++count, r.getReimbDescription());
-            statement.setString(++count, r.getReimbAuthor().toString());
+            statement.setInt(++count, r.getReimbAuthor().getUserId());
             statement.setInt(++count, r.getReimbTypeId().getTypeId());
             statement.execute();
 
