@@ -41,3 +41,20 @@ CREATE TABLE ers_reimbursement(
 	reimb_status_id		INT REFERENCES ers_reimbursement_status(reimb_status_id),
 	reimb_type_id		INT REFERENCES ers_reimbursement_type(reimb_type_id)
 );
+
+INSERT INTO ers_reimbursement_status (reimb_status) VALUES
+('Pending'), ('Approved'), ('Denied');
+
+INSERT INTO ers_reimbursement_type (reimb_type) VALUES
+('Food'),('etc');
+
+INSERT INTO ers_user_roles (user_role) VALUES
+('Employee'), ('Manager');
+
+
+INSERT INTO ers_users(ers_username, ers_password, user_first_name, user_last_name, user_email, user_role_id) VALUES
+('manager', '2e2b24f8ee40bb847fe85bb23336a39ef5948e6b49d897419ced68766b16967a', 'admin', 'god', 'admin@admin.com', 2),
+('employee', '82a69e924ed8b80a888026f1e825c4516f7b38b6628a1b6d8ee4568aa82b9345', 'employee', 'poor', 'employee@employee.com', 1);
+
+INSERT INTO ers_reimbursement (reimb_amount, reimb_submitted, reimb_description, reimb_author, reimb_status_id, reimb_type_id) VALUES 
+('2', (SELECT CURRENT_TIMESTAMP), 'wf', 2, 1, 2);
