@@ -8,14 +8,14 @@ import java.sql.*;
 
 public class UserDAOImpl implements UserDAO{
     @Override
-    public Users findbyId(int userId) {
+    public Users findbyName(String userName) {
         try(Connection conn = ConnectionUtil.getConnection()){
             String sql = "SELECT * FROM (SELECT * FROM ers_users LEFT JOIN ers_user_roles ON ers_users_roles.ers_user_role_id = ers_users.user_role_id)" +
-                " AS role_id WHERE ers_users_id = " + userId + ";";
+                " AS role_id WHERE ers_users_id = ?;";
 
-            Statement statement = conn.createStatement();
-
-            ResultSet result = statement.executeQuery(sql);
+            PreparedStatement statement = conn.prepareStatement(sql);
+            statement.setString(1, userName);
+            ResultSet result = statement.executeQuery();
 
             Users user = new Users();
 
