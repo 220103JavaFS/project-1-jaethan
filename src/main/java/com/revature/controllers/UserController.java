@@ -9,9 +9,8 @@ public class UserController implements Controller{
     private UserService userService = new UserService();
     Handler getUser = (ctx) -> {
         if(ctx.req.getSession(false) != null){
-            String idString = ctx.pathParam("id");
-            int id = Integer.parseInt(idString);
-            Users user = userService.findbyId(id);
+            String name = ctx.pathParam("name");
+            Users user = userService.findbyName(name);
             ctx.json(user);
             ctx.status(200);
         }else{
@@ -20,6 +19,6 @@ public class UserController implements Controller{
     };
     @Override
     public void addRoutes(Javalin app) {
-        app.get("/users/{id}", getUser);
+        app.get("/users/{name}", getUser);
     }
 }
