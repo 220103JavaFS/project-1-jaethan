@@ -1,13 +1,14 @@
 package com.revature.models;
 
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Objects;
 
 public class Reimbursement {
     private int reimbId;
     private int reimbAmount;
-    private long reimbSubmitted;
-    private long reimbResolved;
+    private Timestamp reimbSubmitted;
+    private Timestamp reimbResolved;
     private String reimbDescription;
     private byte[] reimbReceipt;
     private Users reimbAuthor;
@@ -18,7 +19,7 @@ public class Reimbursement {
     public Reimbursement() {
     }
 
-    public Reimbursement(int reimbId, int reimbAmount, long reimbSubmitted, long reimbResolved, String reimbDescription, byte[] reimbReceipt, Users reimbAuthor, Users reimbResolver, ReimbursementStatus reimbStatusId, ReimbursementType reimbTypeId) {
+    public Reimbursement(int reimbId, int reimbAmount, Timestamp reimbSubmitted, Timestamp reimbResolved, String reimbDescription, byte[] reimbReceipt, Users reimbAuthor, Users reimbResolver, ReimbursementStatus reimbStatusId, ReimbursementType reimbTypeId) {
         this.reimbId = reimbId;
         this.reimbAmount = reimbAmount;
         this.reimbSubmitted = reimbSubmitted;
@@ -47,19 +48,19 @@ public class Reimbursement {
         this.reimbAmount = reimbAmount;
     }
 
-    public long getReimbSubmitted() {
+    public Timestamp getReimbSubmitted() {
         return reimbSubmitted;
     }
 
-    public void setReimbSubmitted(long reimbSubmitted) {
+    public void setReimbSubmitted(Timestamp reimbSubmitted) {
         this.reimbSubmitted = reimbSubmitted;
     }
 
-    public long getReimbResolved() {
+    public Timestamp getReimbResolved() {
         return reimbResolved;
     }
 
-    public void setReimbResolved(long reimbResolved) {
+    public void setReimbResolved(Timestamp reimbResolved) {
         this.reimbResolved = reimbResolved;
     }
 
