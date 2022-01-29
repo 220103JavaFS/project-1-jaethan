@@ -12,7 +12,8 @@ public class ManagerDAOImpl implements ManagerDAO{
     @Override
     public List<Reimbursement> viewAllRequest() {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM ers_reimbursement WHERE reimb_status_id = 1;";
+            String sql ="SELECT * FROM ers_reimbursement AS r LEFT JOIN ers_reimbursement_type t ON  t.reimb_type_id = r.reimb_type_id LEFT JOIN ers_reimbursement_status " +
+                    "s ON s.reimb_status_id = r.reimb_status_id WHERE r.reimb_status_id = 1;";
 
             Statement statement = conn.createStatement();
 
@@ -24,16 +25,20 @@ public class ManagerDAOImpl implements ManagerDAO{
                 Reimbursement request = new Reimbursement();
                 request.setReimbId(result.getInt("reimb_id"));
                 request.setReimbAmount(result.getInt("reimb_amount"));
-                request.setReimbSubmitted(result.getLong("reimb_submitted"));
-                request.setReimbResolved(result.getLong("reimb_resolved"));
+                request.setReimbSubmitted(result.getTimestamp("reimb_submitted"));
+                request.setReimbResolved(result.getTimestamp("reimb_resolved"));
                 request.setReimbDescription(result.getString("reimb_description"));
                 request.setReimbReceipt(result.getBytes("reimb_receipt"));
                 int author = result.getInt("reimb_author");
+                if(author != 0){
                 Users authorUser = userDAO.findbyId(author);
                 request.setReimbAuthor(authorUser);
+                }
                 int resolver = result.getInt("reimb_resolver");
-                Users resolverUser = userDAO.findbyId(resolver);
-                request.setReimbAuthor(resolverUser);
+                if(resolver != 0) {
+                    Users resolverUser = userDAO.findbyId(resolver);
+                    request.setReimbAuthor(resolverUser);
+                }
                 ReimbursementStatus status = new ReimbursementStatus(result.getInt("reimb_status_id"),
                         result.getString("reimb_status"));
                 request.setReimbStatusId(status);
@@ -53,7 +58,8 @@ public class ManagerDAOImpl implements ManagerDAO{
     @Override
     public List<Reimbursement> viewUpdatedStatus() {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM ers_reimbursement WHERE reimb_status_id = 2 OR reimb_status_id = 3;";
+            String sql = "SELECT * FROM ers_reimbursement AS r LEFT JOIN ers_reimbursement_type t ON  t.reimb_type_id = r.reimb_type_id LEFT JOIN ers_reimbursement_status " +
+                    "s ON s.reimb_status_id = r.reimb_status_id WHERE reimb_status_id = 2 OR reimb_status_id = 3;";
 
             Statement statement = conn.createStatement();
 
@@ -65,16 +71,20 @@ public class ManagerDAOImpl implements ManagerDAO{
                 Reimbursement request = new Reimbursement();
                 request.setReimbId(result.getInt("reimb_id"));
                 request.setReimbAmount(result.getInt("reimb_amount"));
-                request.setReimbSubmitted(result.getLong("reimb_submitted"));
-                request.setReimbResolved(result.getLong("reimb_resolved"));
+                request.setReimbSubmitted(result.getTimestamp("reimb_submitted"));
+                request.setReimbResolved(result.getTimestamp("reimb_resolved"));
                 request.setReimbDescription(result.getString("reimb_description"));
                 request.setReimbReceipt(result.getBytes("reimb_receipt"));
                 int author = result.getInt("reimb_author");
-                Users authorUser = userDAO.findbyId(author);
-                request.setReimbAuthor(authorUser);
+                if(author != 0){
+                    Users authorUser = userDAO.findbyId(author);
+                    request.setReimbAuthor(authorUser);
+                }
                 int resolver = result.getInt("reimb_resolver");
-                Users resolverUser = userDAO.findbyId(resolver);
-                request.setReimbAuthor(resolverUser);
+                if(resolver != 0) {
+                    Users resolverUser = userDAO.findbyId(resolver);
+                    request.setReimbAuthor(resolverUser);
+                }
                 ReimbursementStatus status = new ReimbursementStatus(result.getInt("reimb_status_id"),
                         result.getString("reimb_status"));
                 request.setReimbStatusId(status);
