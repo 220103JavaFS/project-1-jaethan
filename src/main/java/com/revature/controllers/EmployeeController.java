@@ -25,7 +25,7 @@ public class EmployeeController implements Controller{
     };
 
     Handler viewPastRequest = (ctx) -> {
-        if(ctx.req.getSession(false) == null){
+        if(ctx.req.getSession(false) != null){
             String userId = ctx.pathParam("userId");
             int id = Integer.parseInt(userId);
             ctx.json(employeeService.viewPastRequest(id));

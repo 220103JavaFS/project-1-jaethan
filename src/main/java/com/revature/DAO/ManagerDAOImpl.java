@@ -94,7 +94,7 @@ public class ManagerDAOImpl implements ManagerDAO{
     @Override
     public boolean updateRequest(Reimbursement r) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "UPDATE users SET reimb_resolved = (SELECT CURRENT_TIMESTAMP), reimb_resolver = ?, WHERE reimb_status_id = ?;";
+            String sql = "UPDATE ers_reimbursement SET reimb_resolved = (SELECT CURRENT_TIMESTAMP), reimb_resolver = ?, reimb_status_id = ? WHERE reimb_id = ?;";
 
             PreparedStatement statement = conn.prepareStatement(sql);
 

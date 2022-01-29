@@ -1,8 +1,6 @@
 package com.revature;
 
-import com.revature.controllers.Controller;
-import com.revature.controllers.LoginController;
-import com.revature.controllers.UserController;
+import com.revature.controllers.*;
 import io.javalin.Javalin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +16,7 @@ public class App {
 
         app = Javalin.create();
 
-        configure(new LoginController());
+        configure(new LoginController(), new EmployeeController(), new ManagerController(), new UserController());
         app.start();
 
     }

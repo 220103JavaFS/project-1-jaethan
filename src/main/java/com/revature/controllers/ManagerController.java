@@ -42,7 +42,7 @@ public class ManagerController implements Controller{
     public void addRoutes(Javalin app) {
         app.get("/manager/allRequest", getRequest);
         app.get("/manager/viewUpdate", getUpdates);
-        app.get("/manager/update", updateRequest);
+        app.put("/manager/update", updateRequest);
 
     }
 }
