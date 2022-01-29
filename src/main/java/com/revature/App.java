@@ -2,6 +2,7 @@ package com.revature;
 
 import com.revature.controllers.Controller;
 import com.revature.controllers.LoginController;
+import com.revature.controllers.UserController;
 import io.javalin.Javalin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,13 +17,14 @@ public class App {
     public static void main(String[] args){
 
         app = Javalin.create();
+
         configure(new LoginController());
         app.start();
 
     }
 
     private static void configure(Controller... controllers){
-        for (Controller c: controllers){
+        for(Controller c: controllers){
             c.addRoutes(app);
         }
     }

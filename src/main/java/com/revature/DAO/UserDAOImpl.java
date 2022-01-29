@@ -10,8 +10,8 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public Users findbyName(String userName) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM (SELECT * FROM ers_users LEFT JOIN ers_user_roles ON ers_users_roles.ers_user_role_id = ers_users.user_role_id)" +
-                " AS role_id WHERE ers_users_id = ?;";
+            String sql = "SELECT * FROM (SELECT * FROM ers_users u LEFT JOIN ers_user_roles r ON r.ers_user_role_id = u.user_role_id)" +
+                " AS role_id WHERE ers_username = ?;";
 
             PreparedStatement statement = conn.prepareStatement(sql);
             statement.setString(1, userName);
@@ -26,7 +26,7 @@ public class UserDAOImpl implements UserDAO{
                 user.setUserFirstName(result.getString("user_first_name"));
                 user.setUserLastName(result.getString("user_last_name"));
                 user.setEmail(result.getString("user_email"));
-                Roles role = new Roles(result.getInt("ers_user_role_id"),
+                Roles role = new Roles(result.getInt("user_role_id"),
                         result.getString("user_role"));
                 user.setRoleId(role);
             }
@@ -40,7 +40,7 @@ public class UserDAOImpl implements UserDAO{
     @Override
     public Users findbyId(int userId) {
         try(Connection conn = ConnectionUtil.getConnection()){
-            String sql = "SELECT * FROM (SELECT * FROM ers_users LEFT JOIN ers_user_roles ON ers_users_roles.ers_user_role_id = ers_users.user_role_id)" +
+            String sql = "SELECT * FROM (SELECT * FROM ers_users u LEFT JOIN ers_user_roles r ON r.ers_user_role_id = u.user_role_id)" +
                     " AS role_id WHERE ers_users_id = " + userId + ";";
 
             Statement statement = conn.createStatement();
