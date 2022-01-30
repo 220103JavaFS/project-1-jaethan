@@ -4,7 +4,11 @@ import com.revature.models.*;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class EmployeeDAOTest {
 
@@ -34,8 +38,8 @@ public class EmployeeDAOTest {
     private static Reimbursement reimbursement = new Reimbursement(
             1,
             400,
-            220103,
-            220103,
+            null,
+            null,
             "adsfsd",
             null,
             testUser,
@@ -44,13 +48,14 @@ public class EmployeeDAOTest {
             testType
     );
 
+    @Test
+    @Order(1)
+    public void testViewPastRq() {
+//        List<Reimbursement> list = new ArrayList<>();
+//        list.add(reimbursement);
 
-//    @Test
-//    @Order(1)
-//    public void testViewPastRq() {
-//
-//        assertTrue(mockedDAO.viewPastRequest(1));
-//    }
+        assertEquals(reimbursement, mockedDAO.viewPastRequest(reimbursement.getReimbAuthor().getUserId()));
+    }
 
     @Test
     @Order(2)
