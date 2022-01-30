@@ -19,7 +19,7 @@ public class EmployeeDAOTest {
             "admin");
 
     private static Users testUser = new Users(
-            1,
+            2,
             "admin",
             "password",
             "fname",
@@ -28,7 +28,7 @@ public class EmployeeDAOTest {
             testRole
     );
     private static ReimbursementStatus testStatus = new ReimbursementStatus(
-            1,
+            3,
             "pending"
     );
     private static ReimbursementType testType = new ReimbursementType(
@@ -51,15 +51,12 @@ public class EmployeeDAOTest {
     @Test
     @Order(1)
     public void testViewPastRq() {
-//        List<Reimbursement> list = new ArrayList<>();
-//        list.add(reimbursement);
-
-        assertEquals(reimbursement, mockedDAO.viewPastRequest(reimbursement.getReimbAuthor().getUserId()));
+        assertFalse(mockedDAO.viewPastRequest(reimbursement.getReimbAuthor().getUserId()).isEmpty());
     }
 
     @Test
     @Order(2)
     public void testReimbRq() {
-        assertFalse(mockedDAO.reimbRequest(reimbursement));
+        assertTrue(mockedDAO.reimbRequest(reimbursement));
     }
 }
