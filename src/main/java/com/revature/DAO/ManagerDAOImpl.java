@@ -59,7 +59,7 @@ public class ManagerDAOImpl implements ManagerDAO{
     public List<Reimbursement> viewUpdatedStatus() {
         try(Connection conn = ConnectionUtil.getConnection()){
             String sql = "SELECT * FROM ers_reimbursement AS r LEFT JOIN ers_reimbursement_type t ON  t.reimb_type_id = r.reimb_type_id LEFT JOIN ers_reimbursement_status " +
-                    "s ON s.reimb_status_id = r.reimb_status_id WHERE reimb_status_id = 2 OR reimb_status_id = 3;";
+                    "s ON s.reimb_status_id = r.reimb_status_id WHERE r.reimb_status_id = 2 OR r.reimb_status_id = 3;";
 
             Statement statement = conn.createStatement();
 

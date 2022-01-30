@@ -16,7 +16,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     public List<Reimbursement> viewPastRequest(int authorId) {
         try(Connection conn = ConnectionUtil.getConnection()){
             String sql = "SELECT * FROM ers_reimbursement AS r LEFT JOIN ers_reimbursement_type t ON  t.reimb_type_id = r.reimb_type_id LEFT JOIN ers_reimbursement_status " +
-                    "s ON s.reimb_status_id = r.reimb_status_id WHERE reimb_author = "+ authorId + " AND reimb_status_id = 3 ;";
+                    "s ON s.reimb_status_id = r.reimb_status_id WHERE reimb_author = "+ authorId + " AND (r.reimb_status_id = 2 OR r.reimb_status_id = 3);";
 
             Statement statement = conn.createStatement();
 
