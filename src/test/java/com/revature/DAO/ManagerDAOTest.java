@@ -29,21 +29,10 @@ public class ManagerDAOTest {
             3,
             "pending"
     );
-    private static ReimbursementType testType = new ReimbursementType(
-            1,
-            "ABC"
-    );
     private static Reimbursement reimbursement = new Reimbursement(
             1,
-            400,
-            null,
-            null,
-            "adsfsd",
-            null,
             testUser,
-            null,
-            testStatus,
-            testType
+            testStatus
     );
 
     @Test

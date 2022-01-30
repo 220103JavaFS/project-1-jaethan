@@ -32,6 +32,12 @@ public class Reimbursement {
         this.reimbTypeId = reimbTypeId;
     }
 
+    public Reimbursement(int reimbId, Users reimbResolver, ReimbursementStatus reimbStatusId) {
+        this.reimbId = reimbId;
+        this.reimbResolver = reimbResolver;
+        this.reimbStatusId = reimbStatusId;
+    }
+
     public int getReimbId() {
         return reimbId;
     }
