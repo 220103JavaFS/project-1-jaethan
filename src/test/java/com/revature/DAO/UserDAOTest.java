@@ -14,26 +14,17 @@ public class UserDAOTest {
     @Mock
     private static UserDAO mockedDAO = new UserDAOImpl();
     private static Roles testRole = new Roles(
-            1,
-            "admin");
+            2,
+            "Manager");
 
     private static Users testUser = new Users(
-            2,
-            "admin",
-            "password",
-            "fname",
-            "lname",
-            "test@test.com",
-            testRole
-    );
-    private static ReimbursementStatus testStatus = new ReimbursementStatus(
-            3,
-            "pending"
-    );
-    private static Reimbursement reimbursement = new Reimbursement(
             1,
-            testUser,
-            testStatus
+            "manager",
+            "2e2b24f8ee40bb847fe85bb23336a39ef5948e6b49d897419ced68766b16967a",
+            "admin",
+            "god",
+            "admin@admin.com",
+            testRole
     );
 
     @Test
