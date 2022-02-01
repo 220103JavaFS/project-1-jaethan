@@ -12,10 +12,14 @@ const url = "http://localhost:7000/"
 
 
 if (sessionStorage.getItem("userSession") == null){
-  logoutBtn.innerHTML = "";
-} 
+  manager_div.style.display = 'none';
+  logout_btn.style.display = 'none';
+  employee_div.style.display = 'none';
+  login_div.style.display = 'block';
+}
 
 loginBtn.addEventListener("click", loginFunc);
+logout_btn.addEventListener("click", logoutFunc);
 
 async function loginFunc(){
     let user = {
@@ -37,8 +41,8 @@ async function loginFunc(){
       if(response.status===200){
         login_div.style.display = 'none';
         if (username.value == "manager") {
-            manager_div.style.display = 'block';
-            logout_btn.style.display = 'block';
+          manager_div.style.display = 'block';
+          logout_btn.style.display = 'block';
         } else {
             employee_div.style.display = 'block';
             logout_btn.style.display = 'block';
@@ -46,6 +50,25 @@ async function loginFunc(){
       }else{
         console.log("Login unsuccessful. Returned status code of:"+response.status);
       }
+}
+async function logoutFunc(){
+    
+  
+  let response = await fetch(
+    url+"logout",
+    {
+      method : "POST",   
+      credentials: "include"
+    }
+  );
 
-
+  if(response.status===200){
+      sessionStorage.clear();
+      console.log("logging out");
+      manager_div.style.display = 'none';
+      logoutBtn.style.display = 'none';
+      login_div.style.display = 'block';
+  }else{
+    console.log("Logout unsuccessful. Returned status code of:"+response.status);
+  }
 }
