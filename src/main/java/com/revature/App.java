@@ -2,6 +2,7 @@ package com.revature;
 
 import com.revature.controllers.*;
 import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -14,10 +15,13 @@ public class App {
 
     public static void main(String[] args){
 
-        app = Javalin.create();
+        app = Javalin.create((config)->{ // mario run
+            config.addStaticFiles("C:\\Users\\Jay\\Documents\\Revature\\Week4\\project-1-jaethan\\frontEnd",
+                    Location.EXTERNAL);
+        });
 
         configure(new LoginController(), new EmployeeController(), new ManagerController(), new UserController());
-        app.start();
+        app.start(7000);
 
     }
 
