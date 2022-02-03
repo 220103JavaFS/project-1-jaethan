@@ -105,7 +105,7 @@ async function getPastReimb(){
               let td = document.createElement("td");
               td.innerText = reimb[data];
               
-              if (data == "reimbSubmitted" || data == "reimbResolved") {       
+              if (data == "reimbSubmitted" || data == "reimbResolved") {
                   td.innerText = new Date(reimb[data]);
               }
               if (data == "reimbAmount"){
