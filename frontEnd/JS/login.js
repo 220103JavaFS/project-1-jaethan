@@ -12,9 +12,9 @@ const url = "http://localhost:7000/"
 
 
 if (sessionStorage.getItem("userSession") == null){
-  manager_div.style.display = 'none';
-  logout_btn.style.display = 'none';
-  employee_div.style.display = 'none';
+  // manager_div.style.display = 'none';
+  // logout_btn.style.display = 'none';
+  // employee_div.style.display = 'none';
   login_div.style.display = 'block';
 }
 
