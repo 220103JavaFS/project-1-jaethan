@@ -11,6 +11,7 @@
     <div id = "manager_div" style="display: table;">
         <div class ="input-group input-group-lg w-100 mx-auto">
             <button type="button" id="viewBtn" style="margin:5px;">View All Request</button>
+            <button type="button" id="viewUpdatedBtn" style="margin:5px;">View Updated Request</button>
             <label for="reimbId" style="margin:5px;">Reimbursement ID: </label>
             <input type="text" id="reimbId" name="reimbId">
             <button type="button" id="updateRqstBtn">Update Request</button>
@@ -40,7 +41,7 @@
                 <option value="food">Food</option>
                 <option value="etc">etc</option>
             </select>
-            <select name="types" id="types" style="width:fit-content">
+            <select name="status" id="status" style="width:fit-content">
                 <option value="" disabled selected hidden>Pending</option>
                 <option value="food">Approved</option>
                 <option value="etc">Denied</option>
