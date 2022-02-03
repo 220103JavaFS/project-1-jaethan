@@ -32,6 +32,13 @@ public class Reimbursement {
         this.reimbTypeId = reimbTypeId;
     }
 
+    public Reimbursement(int reimbAmount, String reimbDescription, Users reimbAuthor, ReimbursementType reimbTypeId) {
+        this.reimbAmount = reimbAmount;
+        this.reimbDescription = reimbDescription;
+        this.reimbAuthor = reimbAuthor;
+        this.reimbTypeId = reimbTypeId;
+    }
+
     public Reimbursement(int reimbId, Users reimbResolver, ReimbursementStatus reimbStatusId) {
         this.reimbId = reimbId;
         this.reimbResolver = reimbResolver;
