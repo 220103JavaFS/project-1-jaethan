@@ -77,10 +77,12 @@ async function viewUpdatedFunc(){
 }
 
 async function updateFunc(){
-    let  statusId_value = 2;
+    let  statusId_value = 1;
 
-    if (document.querySelector('#status').value == "denied"){
-      statusId_value = 3;
+    if (document.querySelector('#status').value == "approved"){
+      statusId_value = 2;
+    } else if (document.querySelector('#status').value == "denied"){
+        statusId_value = 3;
     }
     let update = {
         
@@ -101,7 +103,7 @@ async function updateFunc(){
         credentials: "include"
     });
 
-    if(response.status === 200){
+    if(response.status === 202){
         
       console.log("Reimbursement request sent successfully!");
       
