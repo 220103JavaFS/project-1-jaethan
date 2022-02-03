@@ -15,8 +15,12 @@ public class App {
 
     public static void main(String[] args){
 
-        app = Javalin.create((config)->{ // mario run
+        /*app = Javalin.create((config)->{//ethan
             config.addStaticFiles("C:\\Users\\Ethan\\Desktop\\Revature\\Labs\\project-1-jaethan\\frontEnd",
+                    Location.EXTERNAL);
+        });*/
+        app = Javalin.create((config)->{//jay
+            config.addStaticFiles("C:\\Users\\Jay\\Documents\\Revature\\Week4\\project-1-jaethan\\frontEnd",
                     Location.EXTERNAL);
         });
 
