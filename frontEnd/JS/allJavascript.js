@@ -24,6 +24,7 @@ if (sessionStorage.getItem("userSession") == null){
 loginBtn.addEventListener("click", loginFunc);
 logout_btn.addEventListener("click", logoutFunc);
 searchBtn.addEventListener("click", getPastReimb);
+requestBtn.addEventListener("click", requestFunc);
 
 async function loginFunc(){
     let user = {
@@ -131,5 +132,51 @@ async function getPastReimb(){
           }
           reimbTbl.appendChild(row);
       }
+}
+
+async function requestFunc() {
+   
+  let typeId_value = 1;
+
+  if (document.querySelector('#types').value == "etc"){
+    typeId_value = 2;
   }
+
+  // sending reimbursement request
+  console.log("The selected reimbursement type: " + document.querySelector('#select1').value);
+  let status = {
+      
+    reimbAmount:parseInt(document.getElementById("reimbAmount").value),
+    reimbDescription:document.getElementById("reimbDescr").value,
+    reimbAuthor:{
+      userId:parseInt(document.getElementById("reimbAuthor").value)
+    },
+    reimbTypeId:{
+      typeId:typeId_value
+    }
+
+  } 
+  console.log(status);
+
+  // for parsing the input and only allowing two decimal places
+  let num_amount = status.amount;
+  console.log("your parsed amount: " + num_amount);
+
+
+  let response = await fetch(url + "employee", {
+      method:"POST",
+      body:JSON.stringify(status),
+      credentials:"include"
+  })
+
+  if(response.status === 202){
+
+      console.log("Reimbursement request sent successfully!");
+      
+  }else {
+
+    console.log("Unsuccessful" +response.status);
+  }
+  
+}
   
